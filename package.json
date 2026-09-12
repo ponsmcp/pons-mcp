@@ -1,0 +1,57 @@
+{
+  "name": "pons-mcp",
+  "version": "0.2.0",
+  "description": "MCP server for the Pons launchpad on Robinhood Chain (chainId 4663): full read surface, opt-in writes with dry-run-first gating, plus a hosted read-only Streamable HTTP entry",
+  "type": "module",
+  "bin": {
+    "pons-mcp": "dist/index.js",
+    "pons-mcp-http": "dist/serve.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "pons",
+    "robinhood-chain",
+    "launchpad",
+    "ethereum",
+    "uniswap-v4"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "tsx --test test/*.test.ts",
+    "smoke": "node scripts/smoke.mjs",
+    "live": "node scripts/live/run.mjs",
+    "start:http": "node dist/serve.js"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ponsmcp/pons-mcp.git"
+  },
+  "homepage": "https://ponsmcp.ai",
+  "bugs": {
+    "url": "https://github.com/ponsmcp/pons-mcp/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.2",
+    "@noble/curves": "^2.4.0",
+    "@noble/hashes": "^1.8.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
