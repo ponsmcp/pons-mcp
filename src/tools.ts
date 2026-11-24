@@ -519,7 +519,7 @@ export function toolDefinitions(client: RpcClient, signer: Signer | null = null)
           "WRITE (owner-only) — generic factory owner call. fn is an enum over the factory's owner functions; args is a typed object per fn (addresses as 0x strings, integers as strings/numbers, ETH amounts as decimal strings, e.g. setLaunchFee {launchFee: '0.0005'}, setPairTokenEconomics {pairToken, phantomQuote, graduationThreshold, decimals}, setCreatorFeeRecipient {token, newRecipient} — the timelocked owner override, addLaunchConfig/updateLaunchConfig {supply, curveFeeBps, phantomQuote, graduationThreshold, poolFee, tickSpacing, enabled, decimals?}). renounceOwnership additionally requires iUnderstandIrreversible: true. Reverts for non-owners — the dry-run simulation shows it.",
         schema: {
           fn: z.enum(ADMIN_FNS),
-          args: z.record(z.unknown()).optional().describe("Typed args object for the chosen fn"),
+          args: z.record(z.string(), z.unknown()).optional().describe("Typed args object for the chosen fn"),
           iUnderstandIrreversible: z.boolean().optional().describe("Required true for renounceOwnership"),
           dryRun: dryRunField,
           confirm: confirmField,
